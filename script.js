@@ -22,6 +22,7 @@ let attackAP = 100;
 
 const hpMeter = document.getElementById('fungus-meter');
 const apMeter = document.getElementById('attack-meter');
+const fungusMovement = document.getElementById('fungus-movement');
 
 function arcaneAttack(event) {
   console.log('arcane attack');
@@ -64,10 +65,14 @@ function starAttack(event) {
 }
 
 function checkHealth() {
-  if (fungusHP <= 0) {
+  if (fungusHP < 0) {
     fungusHP = 0;
   }
-  if (attackAP <= 0) {
+  if (attackAP < 0) {
     attackAP = 0;
+  }
+  if (fungusHP === 0) {
+    fungusMovement.classList.remove('walk');
+    fungusMovement.classList.add('dead');
   }
 }
