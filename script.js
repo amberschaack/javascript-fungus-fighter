@@ -75,4 +75,8 @@ function checkHealth() {
     fungusMovement.classList.remove('walk');
     fungusMovement.classList.add('dead');
   }
+  if (attackAP === 0) {
+    fungusMovement.classList.remove('walk');
+    fungusMovement.classList.add('jump');
+  }
 }
