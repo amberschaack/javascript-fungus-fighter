@@ -27,11 +27,15 @@ const arcaneButton = document.getElementById('arcane-button');
 const entangleButton = document.getElementById('entangle-button');
 const dragonButton = document.getElementById('dragon-button');
 const starButton = document.getElementById('star-button');
+let fungusValue = document.getElementById('hp-meter');
+let attackValue = document.getElementById('ap-meter');
 
 function arcaneAttack(event) {
   console.log('arcane attack');
   fungusHP -= 14;
   attackAP -= 12;
+  fungusValue.value = fungusHP;
+  attackValue.value = attackAP;
   checkHealth();
   console.log('fungusHP:', fungusHP, '| attackAP: ', attackAP);
   hpMeter.innerHTML = `${fungusHP} HP`;
@@ -42,6 +46,8 @@ function entangleAttack(event) {
   console.log('entangle attack');
   fungusHP -= 9;
   attackAP -= 23;
+  fungusValue.value = fungusHP;
+  attackValue.value = attackAP;
   checkHealth();
   console.log('fungusHP:', fungusHP, '| attackAP: ', attackAP);
   hpMeter.innerHTML = `${fungusHP} HP`;
@@ -52,6 +58,8 @@ function dragonAttack(event) {
   console.log('dragon attack');
   fungusHP -= 47;
   attackAP -= 38;
+  fungusValue.value = fungusHP;
+  attackValue.value = attackAP;
   checkHealth();
   console.log('fungusHP:', fungusHP, '| attackAP: ', attackAP);
   hpMeter.innerHTML = `${fungusHP} HP`;
@@ -62,6 +70,8 @@ function starAttack(event) {
   console.log('star attack');
   fungusHP -= 25;
   attackAP -= 33;
+  fungusValue.value = fungusHP;
+  attackValue.value = attackAP;
   checkHealth();
   console.log('fungusHP:', fungusHP, '| attackAP: ', attackAP);
   hpMeter.innerHTML = `${fungusHP} HP`;
@@ -76,12 +86,10 @@ function checkHealth() {
     attackAP = 0;
   }
   if (fungusHP === 0) {
-    fungusMovement.classList.remove('walk');
-    fungusMovement.classList.add('dead');
+    fungusMovement.classList.replace('walk', 'dead');
   }
-  if (attackAP === 0) {
-    fungusMovement.classList.remove('walk');
-    fungusMovement.classList.add('jump');
+  if (attackAP === 0 || fungusHP === 0) {
+    fungusMovement.classList.replace('walk', 'jump');
     arcaneButton.disabled = true;
     entangleButton.disabled = true;
     dragonButton.disabled = true;
