@@ -23,6 +23,10 @@ let attackAP = 100;
 const hpMeter = document.getElementById('fungus-meter');
 const apMeter = document.getElementById('attack-meter');
 const fungusMovement = document.getElementById('fungus-movement');
+const arcaneButton = document.getElementById('arcane-button');
+const entangleButton = document.getElementById('entangle-button');
+const dragonButton = document.getElementById('dragon-button');
+const starButton = document.getElementById('star-button');
 
 function arcaneAttack(event) {
   console.log('arcane attack');
@@ -78,5 +82,9 @@ function checkHealth() {
   if (attackAP === 0) {
     fungusMovement.classList.remove('walk');
     fungusMovement.classList.add('jump');
+    arcaneButton.disabled = true;
+    entangleButton.disabled = true;
+    dragonButton.disabled = true;
+    starButton.disabled = true;
   }
 }
