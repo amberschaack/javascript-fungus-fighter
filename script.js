@@ -95,4 +95,15 @@ function checkHealth() {
     dragonButton.disabled = true;
     starButton.disabled = true;
   }
+  if (fungusHP < 50) {
+    setInterval(intervalHealth, 1000);
+  }
 }
+
+function intervalHealth() {
+  fungusHP++;
+  fungusValue.value = fungusHP;
+  hpMeter.innerHTML = `${fungusHP} HP`;
+}
+
+// need to figure out how to get it to stop at 100
