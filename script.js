@@ -101,9 +101,12 @@ function checkHealth() {
 }
 
 function intervalHealth() {
-  fungusHP++;
+  if (fungusHP === 100) {
+    let myInterval = setInterval(intervalHealth, 200);
+    clearInterval(myInterval);
+  } else {
+    fungusHP++;
+  }
   fungusValue.value = fungusHP;
   hpMeter.innerHTML = `${fungusHP} HP`;
 }
-
-// need to figure out how to get it to stop at 100
